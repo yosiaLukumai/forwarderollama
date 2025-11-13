@@ -2,12 +2,18 @@ import express from 'express';
 import { Ollama } from 'ollama';
 const app = express();
 const port = 3000;
+import cors from "cors";
 const OLLAMA_API_KEY = "f2cbadd69d764dadb91891a7e8c49b69.iH52kXPTW4zGrDUltoM4b50y";
 
 const ollama = new Ollama({
     host: 'https://ollama.com',
     headers: { Authorization: 'Bearer ' + OLLAMA_API_KEY }
 })
+
+//adding cors
+app.use(cors({
+    origin: '*',
+}));
 
 app.use(express.json());
 
